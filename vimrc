@@ -144,7 +144,7 @@
 " Vim UI {
 
     if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
-        let g:solarized_termcolors=256
+        let g:solarized_termcolors=16
         let g:solarized_termtrans=1
         let g:solarized_contrast="normal"
         let g:solarized_visibility="normal"
@@ -154,11 +154,11 @@
     set tabpagemax=15               " Only show 15 tabs
     set showmode                    " Display the current mode
 
-    set cursorline                  " Highlight current line
+    ""set cursorline                  " Highlight current line
 
     highlight clear SignColumn      " SignColumn should match background
     highlight clear LineNr          " Current line number row will have same background color in relative mode
-    "highlight clear CursorLineNr    " Remove highlight color from current line number
+    "highlight clear CursorLineNr    " Remve highlight color from current line number
 
     if has('cmdline_info')
         set ruler                   " Show the ruler
@@ -233,7 +233,7 @@
 
 " }
 
-" Key (re)Mappings {
+" ?""Key (re)Mappings {
 
     " The default leader is '\', but many people prefer ',' as it's in a standard
     " location. To override this behavior and set it back to '\' (or any other

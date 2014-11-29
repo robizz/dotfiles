@@ -54,7 +54,8 @@ alias frak="fortune"
 PATH="$HOME/bin:$PATH"
 
 
-
+#alias to run with poroper colors spf13 vim into tmux
+alias tmux='TERM=xterm-256color tmux'
 
 ##############################################################################
 # 03. Theme/Colors                                                           #

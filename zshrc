@@ -64,6 +64,9 @@ alias vaghalt='vagrant halt'
 ## Miscellaneous Aliases
 alias htop='sudo htop'
 
+##tmux alias
+alias tmux='TERM=xterm-256color tmux'
+
 # Shell Functions
 # qfind - used to quickly find files that contain a string in a directory
 qfind () {
@@ -76,3 +79,6 @@ qfind () {
 if [ -f /usr/bin/vim ]; then
   export EDITOR=/usr/bin/vim
 fi
+
+#export locale
+export LC_ALL=en_US.UTF-8”
