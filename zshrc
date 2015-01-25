@@ -81,4 +81,4 @@ if [ -f /usr/bin/vim ]; then
 fi
 
 #export locale
-export LC_ALL=en_US.UTF-8”
+export LC_ALL=en_US.UTF-8
