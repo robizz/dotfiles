@@ -1,5 +1,8 @@
+#bash completion script portin
+source /etc/bash_completion.d/git-promote-completion.bash
+
 # Explicitly configured $PATH variable
-PATH=/usr/local/git/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/opt/local/bin:/opt/local/sbin:/usr/X11/bin
+PATH=/usr/local/git/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/opt/local/bin:/opt/local/sbin:/usr/X11/bin:/home/rsora/code/utils
 
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
@@ -41,6 +44,8 @@ if [ -f $HOME/.profile ]; then
   source $HOME/.profile  # Read Mac .profile, if present.
 fi
 
+[[ -s "$HOME/code/utils" ]] && . "$HOME/code/utils"
+
 # Shell Aliases
 ## Git Aliases
 alias gs='git status '
@@ -62,12 +67,24 @@ alias vagssh='vagrant ssh'
 alias vaghalt='vagrant halt'
 
 ## Miscellaneous Aliases
-alias htop='sudo htop'
+alias eclipse='eclipse &'
 
-##tmux alias
+##proxy remove alias
+#alias rmproxy='unset http_proxy; unset https_proxy; unset HTTP_PROXY; unset HTTPS_PROXY'
+
+##tmux aliases
 alias tmux='TERM=xterm-256color tmux'
 
 # Shell Functions
+# remove proxy settings in 
+# shell and apt via mproxy python custom script
+rmproxy(){
+    unset http_proxy
+    unset https_proxy
+    unset HTTP_PROXY 
+    unset HTTPS_PROXY
+}
+
 # qfind - used to quickly find files that contain a string in a directory
 qfind () {
   find . -exec grep -l -s $1 {} \;
@@ -82,3 +99,11 @@ fi
 
 #export locale
 export LC_ALL=en_US.UTF-8
+
+#export reply proxy
+export http_proxy='http://proxy.reply.eu:8080'
+export https_proxy=${http_proxy}
+export HTTP_PROXY=${http_proxy}
+export HTTPS_PROXY=${https_proxy}
+
+autoload -U +X bashcompinit && bashcompinit
