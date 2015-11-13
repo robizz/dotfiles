@@ -31,7 +31,7 @@ COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-flow osx zsh-syntax-highlighting brew repo sudo knife vagrant bundler web-search)
+plugins=(ssh-agent virtualenv virtualenvwrapper virtualenv-prompt aws git git-flow osx zsh-syntax-highlighting brew repo sudo knife vagrant bundler web-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -47,8 +47,9 @@ fi
 [[ -s "$HOME/code/utils" ]] && . "$HOME/code/utils"
 
 # Shell Aliases
+alias ll='ls -lahtr'
 ## Git Aliases
-alias gs='git status '
+alias gs='git fetch && git status '
 alias ga='git add '
 alias gb='git branch '
 alias gc='git commit'
@@ -77,13 +78,24 @@ alias tmux='TERM=xterm-256color tmux'
 
 # Shell Functions
 # remove proxy settings in 
-# shell and apt via mproxy python custom script
 rmproxy(){
     unset http_proxy
     unset https_proxy
-    unset HTTP_PROXY 
+    unset HTTP_PROXY
     unset HTTPS_PROXY
+    sudo mv /etc/apt/apt.conf.d/80proxy /etc/apt/apt.conf.d.disabled
 }
+
+mkproxy(){
+    #export reply proxy
+    export http_proxy='http://proxy.reply.eu:8080'
+    export https_proxy=${http_proxy}
+    export HTTP_PROXY=${http_proxy}
+    export HTTPS_PROXY=${https_proxy}
+    sudo mv /etc/apt/apt.conf.d.disabled/80proxy /etc/apt/apt.conf.d
+}
+
+
 
 # qfind - used to quickly find files that contain a string in a directory
 qfind () {
@@ -107,3 +119,7 @@ export HTTP_PROXY=${http_proxy}
 export HTTPS_PROXY=${https_proxy}
 
 autoload -U +X bashcompinit && bashcompinit
+
+#z command autoload
+. ~/programs/z/z.sh
+
