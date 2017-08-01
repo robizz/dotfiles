@@ -1,0 +1,6 @@
+# remap >< button as modifier to enable vim navigation in keysonic keyboard
+keycode 94 = Mode_switch
+keysym h = h H Left
+keysym l = l L Right
+keysym k = k K Up
+keysym j = j J Down
